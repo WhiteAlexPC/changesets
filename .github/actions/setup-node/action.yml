@@ -1,7 +1,6 @@
-name: Setup CI
-
+name: "Setup Node"
 runs:
-  using: composite
+  using: "composite"
   steps:
     - name: Setup Node.js 16.x
       uses: actions/setup-node@v3

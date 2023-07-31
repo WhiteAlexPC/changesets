@@ -12,7 +12,9 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/actions/ci-setup
+      - uses: ./.github/actions/setup-node
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
 
   test:
     name: Test
@@ -21,7 +23,7 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/actions/ci-setup
+      - uses: ./.github/actions/setup-node
 
       - name: Check Git version
         run: git --version
@@ -42,7 +44,7 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/actions/ci-setup
+      - uses: ./.github/actions/setup-node
 
       - name: Typecheck
         run: yarn types:check
@@ -54,7 +56,7 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/actions/ci-setup
+      - uses: ./.github/actions/setup-node
 
       - name: Lint
         run: yarn lint
